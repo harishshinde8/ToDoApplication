@@ -1,0 +1,40 @@
+<div>
+	<div class="col-md-6 col-lg-6 col-sm-6 col-xs-9">
+		<input type="text" ng-Model="todo.name" class="form-control add-todo" placeholder="Type todo here">
+	</div>
+	<div class="col-lg-2 col-sm-2 col-xs-3 col-md-2"><button id="add" class="btn btn-success glyphicon glyphicon-plus" ng-click="add(todo.name)">Add</button></div>
+	
+	
+	 <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8 mt20">
+     <table class="table table-bordered table-striped">
+     <thead>
+      <tr>
+        <th class="col-md-8">Items</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="x in todos">
+        <td>
+        <div ng-switch on="x.status">
+		    <div ng-switch-when="COMPLETE">
+		        <span id="done-items"><strong>{{x.name}}</strong></span>
+		    </div>
+		    <div ng-switch-default>
+		        <span><strong>{{x.name}}</strong></span>
+		    </div>
+		</div>
+        </td>
+        <td>
+    	<button type="submit" class="btn btn-success" ng-disabled="x.status!='PENDING'" ng-click="complete(x)"><span
+                         aria-hidden="true">Complete</span></button>
+        <button type="submit" class="btn btn-danger" ng-click="deleteTodo(x)"><span
+                        aria-hidden="true">Delete</span></button>
+       </td>
+	</tr>
+    </tbody>
+    </table>
+    
+   </div>
+     
+</div>
